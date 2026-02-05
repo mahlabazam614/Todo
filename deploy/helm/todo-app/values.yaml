@@ -1,0 +1,23 @@
+replicaCount: 1
+
+backend:
+  image:
+    repository: todo-backend
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 8000
+
+frontend:
+  image:
+    repository: todo-frontend
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    type: LoadBalancer
+    port: 3000
+
+database:
+  url: "sqlite:///./todo.db" # Fallback
+  secret: "super-secret-key-123"
